@@ -150,6 +150,10 @@ def test():
     pass
 
 
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+
 def main():
     # NOTE: this is a test for ADG-Net I in our paper
     ''''''
@@ -161,13 +165,18 @@ def main():
     graph_index_tac_dofs, _ = dense_to_sparse(graph_index_tac_dofs)
 
     #
-    rgbd_img = torch.zeros([1, 3, 240, 240]).to(device)
-    pose = torch.zeros([1, 6]).to(device)
-    dofs = torch.zeros([1, 22]).to(device)
-    tactiles = torch.zeros([1, 5]).to(device)
-    qg_ref = torch.zeros([1, 1]).to(device)
-    suc_ref = torch.zeros([1, 1]).to(device)
+    rgbd_img = torch.ones([1, 3, 240, 240]).to(device)
+    pose = torch.ones([1, 6]).to(device)
+    dofs = torch.ones([1, 22]).to(device)
+    tactiles = torch.ones([1, 5]).to(device)
+    qg_ref = torch.ones([1, 1]).to(device)
+    suc_ref = torch.ones([1, 1]).to(device)
     # pose_ref, qg_ref, suc_ref, joints_ref = lst_ref
+
+    # Calculate the total number of parameters
+    total_params = count_parameters(NN_model)
+    print("Total number of parameters:", total_params)
+
     eva_rgb_model = \
         compute_loss_rgbd_model(NN_model, lst_in=[rgbd_img, pose, tactiles, dofs, graph_index_tac_dofs], lst_ref=[pose, qg_ref, suc_ref, dofs])
 
@@ -179,8 +188,6 @@ def main():
 
     pred_multi_model = \
         evaluate_multi_model(NN_model, lst_in=[rgbd_img, pose, tactiles, dofs, graph_index_tac_dofs])
-
-
 
     ###################################################
 
