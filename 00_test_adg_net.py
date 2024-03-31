@@ -19,7 +19,6 @@ from torch.optim import lr_scheduler
 from torch.utils.tensorboard import SummaryWriter
 
 from neural_network_grasp import ADG_Net, get_branch_names, get_all_parameters, set_requires_grad
-from dataload_rt import ShadowHandGraspDataset_RT
 # from accelerate import Accelerator
 # from accelerate import DistributedDataParallelKwargs
 from torch_geometric.utils import dense_to_sparse
@@ -152,7 +151,7 @@ def test():
 
 
 def main():
-    #
+    # NOTE: this is a test for ADG-Net I in our paper
     ''''''
     Majd_tac_dofs = np.array(cfg_all['graph']['graph_dof_tac'])
     non_zero_indices = np.argwhere(Majd_tac_dofs == 1)
@@ -165,7 +164,7 @@ def main():
     rgbd_img = torch.zeros([1, 3, 240, 240]).to(device)
     pose = torch.zeros([1, 6]).to(device)
     dofs = torch.zeros([1, 22]).to(device)
-    tactiles = torch.zeros([1, 15]).to(device)
+    tactiles = torch.zeros([1, 5]).to(device)
     qg_ref = torch.zeros([1, 1]).to(device)
     suc_ref = torch.zeros([1, 1]).to(device)
     # pose_ref, qg_ref, suc_ref, joints_ref = lst_ref

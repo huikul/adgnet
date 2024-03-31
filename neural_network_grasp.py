@@ -105,7 +105,7 @@ class ADG_Net(nn.Module):
         self.dof_tactile2 = GCNConv(cfg['structure']['share_branch']['features'], cfg['structure']['share_branch']['features'])
         self.dof_tactile3 = GCNConv(cfg['structure']['share_branch']['features'], cfg['structure']['share_branch']['features'])
         self.dof_tactile4 = GCNConv(cfg['structure']['share_branch']['features'], cfg['structure']['share_branch']['features'])
-        self.doc_tac_fc = nn.Linear(37 * cfg['structure']['share_branch']['features'], cfg['structure']['share_branch']['features'])
+        self.doc_tac_fc = nn.Linear(27 * cfg['structure']['share_branch']['features'], cfg['structure']['share_branch']['features'])
         #
         # shared layers
         self.share_cbam1 = nn.Sequential(
@@ -206,7 +206,9 @@ class ADG_Net(nn.Module):
         G_tac_dofs = F.leaky_relu(self.dof_tactile2(G_tac_dofs, graph_tac_dofs))
         G_tac_dofs = F.leaky_relu(self.dof_tactile3(G_tac_dofs, graph_tac_dofs))
         G_tac_dofs = F.leaky_relu(self.dof_tactile4(G_tac_dofs, graph_tac_dofs))
+        print(G_tac_dofs.shape)
         G_tac_dofs = G_tac_dofs.view(G_tac_dofs.size(0), -1)
+        print(G_tac_dofs.shape)
         G_tac_dofs = self.doc_tac_fc(G_tac_dofs)
         #
         in_img = F.leaky_relu(self.imgnet_bn0(self.imgnet_conv0(image)))
