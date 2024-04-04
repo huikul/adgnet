@@ -17,11 +17,11 @@ Note: More details about ADG-Net parameters can be found in `cfg/01_nn_train.yam
 # Robotic grasping
 Here are four examples of robotic grasping evaluated via the BIG-Net.
 
-<img src="tutorials_imgs/12_grasp_a.svg" width="14%" alt="flowchart"> <img src="tutorials_imgs/12_grasp_b.svg" width="14%" alt="flowchart"> <img src="tutorials_imgs/12_grasp_c.svg" width="14%" alt="flowchart">
+<img src="tutorials_imgs/12_grasp_a.svg" width="20%" alt="flowchart">    <img src="tutorials_imgs/12_grasp_b.svg" width="20%" alt="flowchart">    <img src="tutorials_imgs/12_grasp_c.svg" width="20%" alt="flowchart">
 
 
 
-<img src="tutorials_imgs/12_grasp_d.svg" width="14%" alt="flowchart"> <img src="tutorials_imgs/12_grasp_e.svg" width="14%" alt="flowchart"> <img src="tutorials_imgs/12_grasp_f.svg" width="14%" alt="flowchart">
+<img src="tutorials_imgs/12_grasp_d.svg" width="20%" alt="flowchart">    <img src="tutorials_imgs/12_grasp_e.svg" width="20%" alt="flowchart">    <img src="tutorials_imgs/12_grasp_f.svg" width="20%" alt="flowchart">
 
 
 ## Extra explanation
