@@ -4,7 +4,7 @@
 
 <img src="tutorials_imgs/abstract.png" width="80%" alt="abstract">
 
-## Pipeline of the proposed grasping method with a bio-inspired soft gripper
+## Pipeline of the proposed sim2real learning framework
 <img src="tutorials_imgs/01_flowchart.svg" width="80%" alt="flowchart">
 
 ## Pipeline of a two-stage grasp simulation
